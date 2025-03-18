@@ -1,0 +1,80 @@
+body {
+    font-family: sans-serif;
+    background-color: rgb(39, 39, 39)
+}
+
+.titulo {
+    margin-top: 25px;
+    color: white;
+}
+
+
+/* IMAGEN */
+img {
+    width: 150px;
+    height: 150px;
+}
+
+
+/* CUERPO */
+.main_div {
+    display: flex;
+    justify-content: center;
+    /* background-color: red; */
+}
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 50%;
+
+    /* background-color: pink; */
+}
+.datos-forma {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    /* background-color: green; */
+}
+.datos {
+    background-color: white;
+    width: 300px;
+    margin-block: 20px;
+    border-radius: 10px;
+}
+span {
+    font-size: 23px;
+    font-weight: bold;
+}
+.data {
+    margin-block: 15px;
+}
+
+
+/* BOTON */
+button {
+    width: 50%;
+    height: 50px;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+
+    background-color: #d95300;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #be4900;
+} 
+
+
+
+/* RESPONSIVE */
+@media(max-width:1400px) {
+    .tarjeta {
+        width: 100%;
+    }
+    button {
+        width: 100%;
+    }
+}

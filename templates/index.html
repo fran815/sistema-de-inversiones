@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index_layout.css') }}">
+    <title>Perfil</title>
+</head>
+<body>
+
+    <div class="capa">
+        <img src="/static/css/img/wallpaper.jpg" alt="">
+    </div>
+    
+    <div id="section_div" class="main_header">
+        <div class="capa"> 
+            <h1>Perfil de inversion</h1>
+        </div>
+    </div>
+
+    <form action="/direccionar_menu" method="post" id="form1">
+        <div id="btn_section">
+            <div id="btn-1">
+                <button onclick="menuInversion()">Registrar inversion</button>
+            </div>
+
+            <div id="btn-2">
+                <button onclick="menuDividendo()">Registrar dividendos</button>
+            </div>
+        </div>
+        <input type="text" name="selec_menu" id="id_menu" hidden>
+    </form>
+    
+
+    <div class="body_div">
+
+        <div id="main_div" class="main_div">
+
+            <div id="mid_div">
+
+                <!-- CHART 1 -->
+                <div class="tarjeta_principal">
+                    <div class="tarjeta_instrumento">
+                        <div class="tradingview-widget-container" id="fmty_grafica">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "BIVA:FMTY/14",
+                                "width": "auto",
+                                "height": 200,
+                                "locale": "es",
+                                "dateRange": "12M",
+                                "colorTheme": "dark",
+                                "isTransparent": false,
+                                "autosize": false,
+                                "largeChartUrl": ""
+                            }
+                            </script>
+                        </div>
+                    </div>
+                    <!-- datos -->
+                    <div class="datos_div">
+                        <div class="informacion_de_instrumento">
+                            <span>Inversión: ${{ '%0.2f'|format(datos[5]) }}</span><br>
+                            <span>Titulos: {{ datos[4]|int }}</span><br>
+                            <span>Dividendos: ${{ '%0.2f'|format(datos[10]) }}</span><br>
+                            <span>Impuestos: ${{ '%0.2f'|format(datos[11]) }}</span><br>
+                        </div>
+                        <!-- grafica pie -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart1"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+
+                <!-- CHART 2 -->
+                <div class="tarjeta_principal">
+                    <div class="tarjeta_instrumento">
+                        <div class="tradingview-widget-container" id="a2">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "BIVA:FNOVA/17",
+                                "width": "auto",
+                                "height": 200,
+                                "locale": "es",
+                                "dateRange": "12M",
+                                "colorTheme": "dark",
+                                "isTransparent": false,
+                                "autosize": false,
+                                "largeChartUrl": ""
+                            }
+                            </script>
+                        </div>
+                    </div>
+                    <!-- datos -->
+                    <div class="datos_div">
+                        <div class="informacion_de_instrumento">
+                            <span>Inversión: ${{ '%0.2f'|format(datos[3]) }}</span><br>
+                            <span>Titulos: {{ datos[2]|int }}</span><br>
+                            <span>Dividendos: ${{ '%0.2f'|format(datos[8]) }}</span><br>
+                            <span>Impuestos: ${{ '%0.2f'|format(datos[9]) }}</span><br>
+                        </div>
+                        <!-- grafica pie -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+
+                <!-- CHART 3 -->
+                <div class="tarjeta_principal">
+                    <div class="tarjeta_instrumento">
+                        <div class="tradingview-widget-container" id="a3">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "BIVA:DANHOS/13",
+                                "width": "auto",
+                                "height": 200,
+                                "locale": "es",
+                                "dateRange": "12M",
+                                "colorTheme": "dark",
+                                "isTransparent": false,
+                                "autosize": false,
+                                "largeChartUrl": ""
+                            }
+                            </script>
+                        </div>
+                    </div>
+                    <!-- datos -->
+                    <div class="datos_div">
+                        <div class="informacion_de_instrumento">
+                            <span>Inversión: ${{ '%0.2f'|format(datos[1]) }}</span><br>
+                            <span>Titulos: {{ datos[0]|int }}</span><br>
+                            <span>Dividendos: ${{ '%0.2f'|format(datos[6]) }}</span><br>
+                            <span>Impuestos: ${{ '%0.2f'|format(datos[7]) }}</span><br>
+                        </div>
+                        <!-- grafica pie -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart3"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END -->
+            </div>
+        </div>
+
+        <div class="main_div_2">
+            <div class="sp_section_div">
+                <div class="progreso_area">
+                    <div id="area_tabla">
+                        <table>
+                            <th>Inversion total</th>
+                            <th>Titulos</th>
+                            <th>Rendimiento Real</th>
+                            <tbody>
+                                <tr>
+                                    <td>${{ '%0.2f'|format(perfil[1]) }}</td>
+                                    <td>{{ perfil[0]|int }}</td>
+                                    <td>${{ '%0.2f'|format(perfil[2]) }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar">
+                            <div class="progressive-bar" style="width: {{ '%0.2f'|format(precio) }}%;"></div>
+                        </div>
+                    </div>
+                    <div class="progreso_numeros">
+                        <p>{{ '%0.2f'|format(precio) }}% de 100%</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+
+            <!-- <div id="section_div">
+                <table>
+                    <th>Fibra</th>
+                    <th>Titulos</th>
+                    <th>Inversion</th>
+                    <th>Dividendo</th>
+                    <th>Impuesto</th>
+                    <tbody>
+                        <tr>
+                            <td style="background-color: rgba(58, 58, 58, 0.041);">DANHOS</td>
+                            <td>{{ datos[0]|int }}</td>
+                            <td>${{ '%0.2f'|format(datos[1]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[6]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[7]) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgba(58, 58, 58, 0.041);">FNOVA</td>
+                            <td>{{ datos[2]|int }}</td>
+                            <td>${{ '%0.2f'|format(datos[3]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[8]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[9]) }}</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: rgba(58, 58, 58, 0.041);;">FMTY</td>
+                            <td>{{ datos[4]|int }}</td>
+                            <td>${{ '%0.2f'|format(datos[5]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[10]) }}</td>
+                            <td>${{ '%0.2f'|format(datos[11]) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> -->
+
+            
+
+            <!-- GRAFICA DE BARRAS -->
+            <div id="section_div" style="padding-inline: 10px;" class="bar_chart">
+                <div class="chart-size-card">
+                    <canvas id="myChartBar" style="width:auto; height: auto;"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- GRAFICA FMTY -->
+    <script>
+        var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
+        var yValues = [24.14, {{ '%0.2f'|format(datos[10]) }}];
+        var barColors = [
+        "#908989",
+        "orange"
+        ];
+
+        new Chart("myChart1", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: false,
+                text: "Rendimiento real"
+                }
+            }
+        });
+    </script>
+
+    <!-- GRAFICA FNOVA -->
+    <script>
+        var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
+        var yValues = [43.50, {{ '%0.2f'|format(datos[8]) }}];
+        var barColors = [
+        "#908989",
+        "orange"
+        ];
+
+        new Chart("myChart2", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: false,
+                text: "Rendimiento real"
+                }
+            }
+        });
+    </script>
+
+    <!-- GRAFICA DANHOS -->
+    <script>
+        var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
+        var yValues = [58.31, {{ '%0.2f'|format(datos[6]) }}];
+        var barColors = [
+        "#908989",
+        "orange"
+        ];
+
+        new Chart("myChart3", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: false,
+                text: "Rendimiento real"
+                }
+            }
+        });
+    </script>
+
+
+
+
+    <!-- GRAFICA DE BARRAS -->
+    <script>
+        var xValues = ["DANHOS", "FNOVA", "FMTY"];
+        var yDividendos = [{{ '%0.2f'|format(datos[6]) }}, {{ '%0.2f'|format(datos[8]) }}, {{ '%0.2f'|format(datos[10]) }}];
+        var yImpuestos = [{{ '%0.2f'|format(datos[7]) }}, {{ '%0.2f'|format(datos[9]) }}, {{ '%0.2f'|format(datos[11]) }}];
+
+        var bar_ctx = document.getElementById('myChartBar').getContext('2d');
+        
+        var gradient = bar_ctx.createLinearGradient(0, 0, 0, 800);
+            gradient.addColorStop(0, '#d95300');
+            gradient.addColorStop(1, 'orange');
+
+        var gradient_impuestos = bar_ctx.createLinearGradient(0, 0, 0, 800);
+            gradient_impuestos.addColorStop(1, 'black');
+            gradient_impuestos.addColorStop(0, 'red');
+
+        var myChartBar = new Chart(bar_ctx, {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    label: "Dividendos",
+                    backgroundColor: gradient,
+                    hoverBackgroundColor: gradient,
+                    hoverBorderWidth: 2,
+                    data: yDividendos,
+                },
+                {
+                    label: "Impuestos",
+                    backgroundColor: gradient_impuestos,
+                    hoverBackgroundColor: gradient_impuestos,
+                    hoverBorderWidth: 2,
+                    data: yImpuestos,
+                }
+            ]
+            },
+            options: {
+                legend: {display: true},
+                title: {
+                display: false,
+                text: "Dividendos"
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        },
+                        gridLines: {
+                            display: true,
+                            color: "gray"
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            color: "gray"
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
+    <script>
+        // BOTON INVERSION:
+        function menuInversion() {
+            var miMenu = document.getElementById('id_menu');
+            var form = document.getElementById('form1');
+
+            miMenu.value = "";
+            miMenu.value = "inversion";
+
+            form.submit()
+        }
+
+        // BOTON DIVIDENDO:
+        function menuDividendo() {
+            var miMenu = document.getElementById('id_menu');
+            var form = document.getElementById('form1');
+
+            miMenu.value = "";
+            miMenu.value = "dividendo";
+
+            form.submit()
+        }
+    </script>
+
+</body>
+</html>

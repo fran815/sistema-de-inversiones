@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/inversion_exitosa.css') }}">
+    <title>Registro exitoso</title>
+</head>
+<body>
+
+    <div class="main_div">
+        <div class="tarjeta">
+            <div class="titulo">
+                <h1>¡Su registro ha sido exitosamente guardado!</h1>
+            </div>
+
+            <div class="imagen-div">
+                <div class="imagen">
+                    <img src="/static/css/img/check.png" alt="">
+                </div>
+            </div>
+        
+            <div class="datos-forma">
+                <div class="datos">
+                    <div class="data">
+                        <span>Fecha: <span>{{ dt[0] }}</span></span>
+                    </div>
+                    <div class="data">
+                        <span>FIBRA: <span>{{ dt[1] }}</span></span>
+                    </div>
+                    <div class="data">
+                        <span>Precio: <span>${{ dt[2] }}</span></span>
+                    </div>
+                    <div class="data">
+                        <span>Titulos: <span>{{ dt[3] }}</span></span>
+                    </div>
+                    <div class="data">
+                        <span>Total: <span>${{ dt[4] }}</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <form action="/retornar" method="post" id="id_form">
+                <input type="text" name="ok_name" id="ok_id" hidden>
+                <button onclick="terminar()">Volver al perfil</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function terminar() {
+            var ok = document.getElementById('ok_id');
+            var formu = document.getElementById('id_form');
+
+            ok.value = "ok";
+
+            formu.submit()
+        }
+    </script>
+
+</body>
+</html>

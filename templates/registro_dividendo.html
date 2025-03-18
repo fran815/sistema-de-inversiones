@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro_dividendo_layout.css') }}">
+    <title>Dividendos</title>
+</head>
+<body>
+    <div class="main_header">
+        <div class="regresar_div">
+            <a href="/regresar_perfil/{{ 'perfil' }}">
+                <img src="/static/css/img/back.png" alt="" id="back-arrow">
+            </a>
+        </div>
+
+        <div class="titulo_div">
+            <h1>Dividendos</h1>
+        </div>
+    </div>
+
+    <!-- IMAGEN -->
+    <div class="imagen-div">
+        <!-- <img src="/static/css/img/desk.jpg" alt=""> -->
+    </div>
+
+    <div class="main_div">
+        <!-- SECCION FORMULARIO -->
+        <div class="formulario_main">
+            <div class="formulario_figura">
+                <!-- TITULO FORMULARIO -->
+                <div class="sub-titulo-formulario">
+                    <h2>Registrar Dividendos</h2>
+                </div>
+                
+                <div class="datos_forma">
+                    <form action="/registrar-dividendo" method="post" id="form-id">
+                        <!-- fecha input -->
+                        <div class="elemento-forma">
+                            <label>Fecha: </label><br>
+                            <input type="date" id="fecha_input" name="fecha_name" required>
+                        </div>
+
+                        <!-- fibra input -->
+                        <div class="elemento-forma">
+                            <label>FIBRA: </label><br>
+                            <select name="fibra_name" id="fibra_input" required>
+                                <option value="">--- Seleccionar FIBRA ---</option>
+                                <option value="FMTY">FMTY</option>
+                                <option value="FNOVA">FNOVA</option>
+                                <option value="DANHOS">DANHOS</option>
+                            </select><br>
+                        </div>
+                        
+                        <!-- titulos input -->
+                        <div class="elemento-forma">
+                            <label>Titulos: </label><br>
+                            <input type="number" min="1" id="titulos_input" onkeyup="multiplicar();" name="titulos_name" required>
+                        </div>
+
+                        <!-- dividendo input -->
+                        <div class="elemento-forma">
+                            <label>Dividendo: </label><br>
+                            <input type="number" min="0.001" id="dividendo_input" onkeyup="multiplicar();" name="dividendo_name" required>
+                        </div>
+
+                        <!-- impuesto input -->
+                        <div>
+                            <label>Impuesto: </label><br>
+                            <input type="number" min="0.001" id="impuesto_input" onkeyup="multiplicar();" name="impuesto_name" required>
+                        </div>
+
+                        <!-- ganancia span -->
+                        <div class="elemento-forma">
+                            <label for="ganancia_span">Ganancia: $</label>
+                            <span id="ganancia_span"></span><br>
+                        </div>
+
+                        <div class="elemento-forma">
+                            <button onclick="enviar_forma()" id="registrar-btn">Registrar</button>
+                        </div>
+
+                        <input type="number" id="ganancia_input" name="ganancia_name" hidden>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SECCION DE TABLA -->
+        <div class="tabla-main">
+            <div class="espacio-tabla">
+                <table>
+                    <th>Fecha</th>
+                    <th>FIBRA</th>
+                    <th>Titulos</th>
+                    <th>Dividendo</th>
+                    <th>Impuesto</th>
+                    <th>Ganancia</th>
+                    <th>Opcion</th>
+                <tbody>
+                    {% for x in dividendos %}
+                        <tr>
+                            <td>{{ x[1] }}</td>
+                            <td>{{ x[2] }}</td>
+                            <td>{{ x[3] }}</td>
+                            <td>${{ x[4] }}</td>
+                            <td>${{ x[5] }}</td>
+                            <td>${{ x[6] }}</td>
+                            <td>
+                                <!-- <a href="">Editar</a> -->
+                                <div class="eliminar">
+                                    <a href="/eliminar_dividendo/{{ x[0] }}">Eliminar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        // MULTIPLICAR PRECIO DE COMPRA X TITULOS:
+        function multiplicar () {
+            var titulos = document.getElementById('titulos_input').value;
+            var dividendo = document.getElementById('dividendo_input').value;
+            var impuesto = document.getElementById('impuesto_input').value;
+            
+            /* Esta es la multiplicacion. */
+            total = (titulos * dividendo) - impuesto;
+            
+            // Colocar el resultado de la multiplicacion en el control "span".
+            document.getElementById('ganancia_span').innerHTML = total.toFixed(2);
+        }
+
+        // ENVIAR FORMULARIO:
+        function enviar_forma() {
+            var cantidad_total = document.getElementById('ganancia_span').innerHTML;
+            var total_ganancia = document.getElementById('ganancia_input');
+            var enviar = document.getElementById('form-id');
+
+            // Se envia la cantidad total al input oculto para enviarlo en el formulario
+            total_ganancia.value = cantidad_total;
+
+            if (total_ganancia.value == 0.00) {
+                alert("Hay campos que faltan por llenar")
+            }
+            else {
+                var alerta = confirm("¿Esta seguro que quiere proceder con el registro?");
+                if (alerta == true) {
+                    enviar.submit();
+                }
+                else {
+                    document.getElementById('fecha_input').value = "";
+                    document.getElementById('fibra_input').value = "";
+                    document.getElementById('titulos_input').value = null;
+                    document.getElementById('dividendo_input').value = null;
+                    document.getElementById('impuesto_input').value = null;
+                    document.getElementById('ganancia_span').innerHTML = null;
+                }
+            };
+        }
+    </script>
+    
+</body>
+</html>

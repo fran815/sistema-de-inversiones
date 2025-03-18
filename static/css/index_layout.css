@@ -1,0 +1,325 @@
+body {
+    font-family: sans-serif;
+    background-color: black;
+}
+h1 {
+    margin-left: 10px;
+    color: white;
+}
+
+/* imagen */
+img {
+    background-image: url(/static/css/img/wallpaper.jpg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+
+/* cuerpo secundario */
+.body_div {
+    display: flex;
+}
+.main_div {
+    width: 50%;
+    /* background-color: red; */
+    margin-top: 2.7%;
+}
+.main_div_2 {
+    width: 50%;
+    margin-top: 20px;
+    /* background-color: rgba(0, 0, 255, 0.301); */
+}
+
+
+/* botones */
+button {
+    width: 100%;
+    height: 30px;
+    background-color: #d95300;
+    color: white;
+    font-weight: bold;
+    border: 2px;
+    border-color: #ad4200;
+    transition: 0.5s;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #a13e01;
+}
+#btn_section{
+    display: flex;
+    width: 100%;
+}
+#btn-1 {
+    width: 50%;
+}
+#btn-2 {
+    width: 50%;
+}
+
+#section_div {
+    margin-inline: 0px;
+}
+.main_header {
+    display: flex;
+    flex-direction: column;
+    background-position: center;
+    background-color: black;
+}
+/* .capa {
+    background: rgba(34, 47, 195, 0.473);
+    background: linear-gradient(0deg, rgba(34, 47, 195, 0.466) 62%, rgba(45, 55, 253, 0.473) 100%);
+    
+} */
+
+
+
+/* tarjetas de informacion */
+.tarjeta_principal {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-block: 30px;
+    /* background-color: rgba(128, 128, 128, 0.411); */
+}
+
+.tarjeta_instrumento {
+    width: 350px;
+    margin-left: 10px;
+}
+.datos_div {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 50%;
+    background-color: black;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom: 1px solid rgb(61, 61, 61);
+    border-top: 1px solid rgb(61, 61, 61);
+    border-right: 1px solid rgb(61, 61, 61);
+
+}
+.informacion_de_instrumento {
+    color: white;
+    width: 50%;
+    /* background-color: green; */
+}
+.mini_grafica_pie {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    border-top-right-radius: 3%;
+    border-bottom-right-radius: 3%;
+    /* background-color: yellow; */
+}
+.pie_chart {
+    width: 170px;
+    /* background-color: pink; */
+}
+#myChart1 {
+    width: 5px;
+    height: 5px;
+}
+span { 
+    /* AJUSTE DEL TAMAÑO DE LAS LETRAS DE LAS TARJETAS */
+    display: inline-block;
+    height: 28px;
+}
+
+
+/* seccion de progreso y grafica de barras */
+.sp_section_div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-block: 10px;
+}
+.progreso_area {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+/* tabla */
+#area_tabla {
+    width: 100%;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    color: white;
+}
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+
+
+.progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+.progress-bar {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    height: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+.progressive-bar {
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: green;
+    border-radius: 10px;
+    margin-inline: 3px;
+}
+.progreso_numeros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    color: white;
+}
+.bar_chart {
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+}
+.chart-size-card {
+    /* background-color: gray; */
+    width: 100%;
+}
+
+
+
+/* SECCION RESPONSIVE */
+@media(max-width:1483px) {
+    /* BODY */
+    img {
+        position: fixed;
+        background-position: center;
+    }
+    .main_div {
+        margin-top: 0px;
+    }
+
+    /* BOTONES */
+    button {
+        width: 100%;
+    }
+    #btn_section{
+        display: flex;
+        width: 100%;
+    }
+    #btn-1 {
+        width: 50%;
+    }
+    #btn-2 {
+        width: 50%;
+    }
+    
+    /* INSTRUMENTOS */
+    .tarjeta_instrumento {
+        width: 100%;
+    }
+    .pie_chart {
+        width: 120px;
+     }
+    .tarjeta_principal {
+        flex-direction: column;
+        margin-block: 10px;
+    }
+    .datos_div {
+        width: 100%;
+        height: 180px;
+        margin-left: 10px;
+
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 3%;
+        border-bottom-left-radius: 3%;
+
+        border-bottom: 1px solid rgb(61, 61, 61);
+        border-top: 0px solid rgb(61, 61, 61);
+        border-right: 1px solid rgb(61, 61, 61);
+        border-left: 1px solid rgb(61, 61, 61);
+    }
+}   
+
+
+@media(max-width:911px) {
+    table {
+        font-size: 12px;
+    }
+}
+
+
+@media(max-width:780px) {
+    /* BODY */
+    .body_div {
+        flex-direction: column;
+        justify-content: center;
+        margin-inline: 10px;
+    }
+    .main_div {
+        order: 1;
+        width: 100%;
+    }
+    .main_div_2 {
+        order: 0;
+        width: 100%;
+    }
+
+
+    /* INSTRUMENTOS */
+    .tarjeta_instrumento {
+        width: 100%;
+        margin-left: 0px;
+    }
+    .pie_chart {
+        width: 120px;
+     }
+    .tarjeta_principal {
+        flex-direction: column;
+    }
+    .datos_div {
+        width: 100%;
+        height: 180px;
+        margin-left: 0px;
+
+        border-top-right-radius: 0%;
+        border-bottom-right-radius: 3%;
+        border-bottom-left-radius: 3%;
+    }
+
+    /* TABLA */
+    table {
+        font-size: 12px;
+    }
+
+    /* BAR CHART */
+    .chart-size-card {
+        width: 100%;
+    }
+}  
