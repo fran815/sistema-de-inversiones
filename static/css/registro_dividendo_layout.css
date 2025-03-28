@@ -3,7 +3,7 @@ body {
     flex-direction: column;
     height: 100dvh;
     font-family: sans-serif;
-    background-color: rgb(39, 39, 39);
+    background-color: whitesmoke;
 }
 
 /* DIV GENERAL */
@@ -79,7 +79,7 @@ body {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .elemento-forma {
     margin-block: 18px;
@@ -211,6 +211,8 @@ tr:nth-child(even) {
         flex-direction: column;
     }
     .formulario_main {
+        background-image: url(/static/css/img/financial.jpg);
+        background-position: center;
         width: 100%;
         margin-bottom: 25px;
         height: auto;
@@ -220,8 +222,9 @@ tr:nth-child(even) {
     .formulario_figura {
         justify-content: center;
         text-align: center;
-        max-width: 305px;
+        max-width: 405px;
         margin-top: 25px;
+        margin-bottom: 20px;
     }
     input {
         width: 100%;
@@ -244,10 +247,10 @@ tr:nth-child(even) {
 }
 
 
-@media(max-width:500px) {
+@media(max-width:910px) {
     /* FORMULARIO */
     .formulario_figura {
-        min-width: 245px;
+        min-width: 345px;
     }
 
 

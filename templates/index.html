@@ -35,10 +35,6 @@
                         <span>Titulos:</span><br>
                         <span>{{ perfil[0]|int }}</span>
                     </div>
-                    <!-- <div class="datos-inversion-div">
-                        <span>Rentas:</span><br>
-                        <span style="color: green;">${{ '%0.2f'|format(perfil[2]) }}</span>
-                    </div> -->
                 </div>
 
                 <!-- ENLACES PARA PAGINAS OFICIALES -->
@@ -132,14 +128,14 @@
                     <form action="/direccionar_menu" method="post" id="form2" hidden>
                         <div id="btn_section">
                             <div id="btn-1">
-                                <button onclick="menuInversion()">Registrar inversion</button>
+                                <button onclick="menuInversion2()">Registrar inversion</button>
                             </div>
                 
                             <div id="btn-2">
-                                <button onclick="menuDividendo()">Registrar dividendos</button>
+                                <button onclick="menuDividendo2()">Registrar dividendos</button>
                             </div>
                         </div>
-                        <input type="text" name="selec_menu" id="id_menu" hidden>
+                        <input type="text" name="selec_menu" id="id_menu2" hidden>
                     </form>
                 </div>
 
@@ -809,6 +805,29 @@
         function menuDividendo() {
             var miMenu = document.getElementById('id_menu');
             var form = document.getElementById('form1');
+
+            miMenu.value = "";
+            miMenu.value = "dividendo";
+
+            form.submit()
+        }
+    </script>
+    <script>
+        // BOTON INVERSION:
+        function menuInversion2() {
+            var miMenu = document.getElementById('id_menu2');
+            var form = document.getElementById('form2');
+
+            miMenu.value = "";
+            miMenu.value = "inversion";
+
+            form.submit()
+        }
+
+        // BOTON DIVIDENDO:
+        function menuDividendo2() {
+            var miMenu = document.getElementById('id_menu2');
+            var form = document.getElementById('form2');
 
             miMenu.value = "";
             miMenu.value = "dividendo";

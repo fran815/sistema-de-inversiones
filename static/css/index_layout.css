@@ -6,6 +6,7 @@ body {
 
 /* SECCION DE DATOS DEL PERFIL */
 .main_header {
+    display: block;
     width: 20%;
     /* background-color: gray; */
 }

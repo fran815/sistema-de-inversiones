@@ -3,7 +3,8 @@ body {
     flex-direction: column;
     height: 100dvh;
     font-family: sans-serif;
-    background-color: rgb(39, 39, 39);
+    /* background-color: rgb(39, 39, 39); */
+    background-color: whitesmoke;
 }
 
 /* DIV GENERAL */
@@ -42,7 +43,7 @@ body {
     width: 50%;
     height: 100%;
     z-index: -1;
-    opacity: 0.8;
+    opacity: 1;
 }
 
 
@@ -62,7 +63,7 @@ body {
     flex-direction: column;
     width: 45%;
 
-    background: rgba(255, 255, 255, 0.315);
+    background: rgba(255, 255, 255, 0.507);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
@@ -82,7 +83,7 @@ body {
     justify-content: center;
     width: 100%;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 .elemento-forma {
     margin-block: 18px;
@@ -197,6 +198,9 @@ tr:nth-child(even) {
     .imagen-div{
         display: none;
     }
+    .formulario_main {
+        background-image: url(/static/css/img/desk.jpg);
+    }
     
     /* FORMULARIO */
     .main_div {
@@ -208,13 +212,17 @@ tr:nth-child(even) {
         margin-bottom: 25px;
         height: auto;
 
-        background-color: rgb(39, 39, 39);
+        background-color: whitesmoke;
     }
     .formulario_figura {
         justify-content: center;
         text-align: center;
-        max-width: 305px;
+        max-width: 405px;
         margin-top: 25px;
+        margin-bottom: 20px;
+    }
+    .elemento-forma label {
+        color: black;
     }
     input {
         width: 100%;
@@ -234,10 +242,10 @@ tr:nth-child(even) {
 }
 
 
-@media(max-width:500px) {
+@media(max-width:910px) {
     /* FORMULARIO */
     .formulario_figura {
-        min-width: 245px;
+        min-width: 345px;
     }
 
 
