@@ -12,7 +12,7 @@ app.config['MYSQL_DB'] = 'bj7l3xtoftrlpschwtah'
 app.config['MYSQL_PORT'] = 3306
 mysql = MySQL(app)
 
-app.secret_key = 'mysecretkey'
+# app.secret_key = 'mysecretkey'
 
 
 @app.route('/')
@@ -20,7 +20,8 @@ def index():
     fibras = ['DANHOS','FNOVA','FMTY']
     data1 = []
     caja_1 = []
-    precio_fibras = []
+    porcentajes = []
+    lista_ganancias = []
 
     
 
@@ -91,9 +92,33 @@ def index():
                 else:
                     caja_1.append(y)
     
-    porcentaje = (float(data1[2])/125.95) * 100
+    porcentaje = (float(data1[2])/138.18) * 100
+    porcentaje_anual = (float(data1[2])/float(data1[1])) * 100
+    porcentaje_fmty = (float(caja_1[10])/32.00) * 100
+    porcentaje_fnova = (float(caja_1[8])/43.50) * 100
+    porcentaje_danhos = (float(caja_1[6])/62.68) * 100
 
-    return render_template('index.html',precio=porcentaje, perfil=data1, datos=caja_1)
+    porcentajes = [porcentaje, porcentaje_fmty, porcentaje_fnova, porcentaje_danhos]
+
+
+    # LISTA DE GANANCIAS MENSUALES PARA GRAFICA
+    sql3 = """SELECT SUM(ganancia) AS total
+    FROM dividendos
+    WHERE YEAR(fecha) = '2025'
+    GROUP BY MONTH(fecha)
+    """
+
+    cur = mysql.connection.cursor()
+    cur.execute(sql3)
+    tb3 = cur.fetchall()
+
+    for x in tb3:
+        lista_ganancias.append(float(x[0]))
+    
+    lista_ganancias.insert(0, 0)
+
+
+    return render_template('index.html',precio=porcentajes, perfil=data1, anual=porcentaje_anual, datos=caja_1, ganancia=lista_ganancias)
 
 
 @app.route('/registrar-inversion', methods=['GET','POST'])

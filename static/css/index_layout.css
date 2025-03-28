@@ -1,325 +1,605 @@
 body {
+    display: flex;
+    height: 100dvh;
     font-family: sans-serif;
-    background-color: black;
-}
-h1 {
-    margin-left: 10px;
-    color: white;
 }
 
-/* imagen */
-img {
-    background-image: url(/static/css/img/wallpaper.jpg);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.2;
-}
-
-
-/* cuerpo secundario */
-.body_div {
-    display: flex;
-}
-.main_div {
-    width: 50%;
-    /* background-color: red; */
-    margin-top: 2.7%;
-}
-.main_div_2 {
-    width: 50%;
-    margin-top: 20px;
-    /* background-color: rgba(0, 0, 255, 0.301); */
-}
-
-
-/* botones */
-button {
-    width: 100%;
-    height: 30px;
-    background-color: #d95300;
-    color: white;
-    font-weight: bold;
-    border: 2px;
-    border-color: #ad4200;
-    transition: 0.5s;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #a13e01;
-}
-#btn_section{
-    display: flex;
-    width: 100%;
-}
-#btn-1 {
-    width: 50%;
-}
-#btn-2 {
-    width: 50%;
-}
-
-#section_div {
-    margin-inline: 0px;
-}
+/* SECCION DE DATOS DEL PERFIL */
 .main_header {
+    width: 20%;
+    /* background-color: gray; */
+}
+.main-header-2 {
+    display: none;
+}
+.espacio-tarjeta {
+    /* background-color: white; */
+    text-align: center;
+    color: black;
+}
+.espacio-datos {
+    height: 88%;
+    /* border-radius: 10px; */
+    margin-inline: 15px;
+
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+/* FOTO DEL PERFIL*/
+.espacio-imagen{
+    display: flex;
+    justify-content: center;
+
+    /* background-color: green; */
+}
+.imagen {
+    background-image: url(/static/css/img/usuario.png);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    margin-block: 35px;
+
+    border-radius: 100%;
+    /* background-color: rgba(0, 0, 0, 0.61); */
+    border: 3px solid gray;
+}
+
+/* DATOS DE INVERSION */
+.datos-inversion {
+    display: flex;
+    width: 100%;
+}
+.datos-inversion-div {
+    width: 50%;
+    text-align: center;
+}
+.datos-inversion-div span {
+    font-weight: bold;
+    color: black;
+}
+
+/* TARJETAS CON ENLACES */
+.espacio-enlaces-web {
     display: flex;
     flex-direction: column;
-    background-position: center;
-    background-color: black;
+    /* background-color: yellow; */
 }
-/* .capa {
-    background: rgba(34, 47, 195, 0.473);
-    background: linear-gradient(0deg, rgba(34, 47, 195, 0.466) 62%, rgba(45, 55, 253, 0.473) 100%);
-    
-} */
+.espacio-a {
+    margin-block: 30px;
+}
+#boton-a {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+}
+.boton {
+    display: flex;
+    align-items: center;
+    margin-inline: 20px;
 
+    border-radius: 10px;
+    /* background-color: rgba(204, 54, 0, 0.582); */
+    border: 1px solid rgba(228, 228, 228, 0.699);
+    background: rgba(231, 231, 231, 0.445) var(--p,0)/var(--p,0) no-repeat;
+    transition: .3s, background-position 0s;
+}
+.boton:hover {
+    --p: 100%;
+    background: rgba(139, 139, 139, 0.582);
+    color: white;
+}
+.imagen-fibra-fmty {
+    width: 50px;
+    height: 50px;
+    margin-block: 10px;
+    margin-inline: 15px;
 
+    background-color: red;
+    border-radius: 100%;
+}
+.imagen-fibra-fnova {
+    width: 50px;
+    height: 50px;
+    margin-block: 10px;
+    margin-inline: 15px;
 
-/* tarjetas de informacion */
-.tarjeta_principal {
+    background-color: rgb(34, 34, 255);
+    border-radius: 100%;
+}
+.imagen-fibra-danhos {
+    width: 50px;
+    height: 50px;
+    margin-block: 10px;
+    margin-inline: 15px;
+
+    background-color: rgb(0, 0, 153);
+    border-radius: 100%;
+}
+
+/* BARRA DE PROGRESO */
+.espacio-barra-progreso {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 200px;
+
+    /* background-color: yellow; */
+}
+.barra-area {
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-block: 30px;
-    /* background-color: rgba(128, 128, 128, 0.411); */
+    height: 170px;
+
+    /* background-color: gray; */
+}
+.main-barra {
+    width: 90%;
+    height: 150px;
+
+    /* background-color: black; */
+}
+.progreso_numeros p {
+    font-weight: bold;
 }
 
-.tarjeta_instrumento {
-    width: 350px;
-    margin-left: 10px;
+
+/* ****** RESPONSIVE-BOX ******** */
+.responsive-box {
+    display: flex;
+    width: 80%;
+
+    /* background-color: red; */
 }
-.datos_div {
+
+/* SECCION DE DATOS DE GRAFICAS */
+.body_div {
+    /* background-color: gray; */
+    width: 75%;
+}
+#form1 {
     display: flex;
     justify-content: center;
-    text-align: center;
     align-items: center;
-    width: 50%;
-    background-color: black;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom: 1px solid rgb(61, 61, 61);
-    border-top: 1px solid rgb(61, 61, 61);
-    border-right: 1px solid rgb(61, 61, 61);
+    height: 81px;
+    width: 100%;
 
+    /* background-color: red; */
+}
+#btn_section {
+    display: grid;
+    grid-template-areas: 
+    "1 2";
+    gap: 20px;
+    /* background-color: pink; */
+}
+#btn-1 button {
+    grid-area: 1;
+    width: 180px;
+    height: 30px;
+    transition: 0.3s;
+
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+#btn-1 button:hover {
+    background-color: rgb(70, 70, 70);
+}
+#btn-2 button {
+    grid-area: 2;
+    width: 180px;
+    height: 30px;
+    transition: 0.3s;
+
+    color: white;
+    background-color: black;
+    border-color: black;
+}
+#btn-2 button:hover {
+    background-color: rgb(70, 70, 70);
+}
+
+/* GRAFICAS */
+#mid_div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    /* background-color: red; */
+}
+.area-cartas {
+    display: flex;
+    width: 90%;
+    
+    /* background-color: green; */
+}
+.tarjeta_principal {
+    width: 33.33%;
+    margin-inline: 20px;
+    
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+.datos_div {
+    text-align: center;
+    /* background-color: blue; */
 }
 .informacion_de_instrumento {
-    color: white;
-    width: 50%;
-    /* background-color: green; */
+    margin-block: 10px;
+}
+
+/* GRAFICA DE LINEAS */
+.area-graficas {
+    display: flex;
+    /* width: 50%; */
+    height: 475px;
+
+    margin-block: 20px;
+    /* background-color: red; */
+}
+.grafica-lineas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+
+    /* background-color: orange; */
+}
+.linechart {
+    width: 95%;
+    height: 475px;
+    /* background-color: yellow; */
+}
+.linechart canvas {
+    width: 150px;
+    height: 100%;
+}
+
+/* GRAFICAS PIE */
+.area-pie {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10%;
+    /* background-color: brown; */
 }
 .mini_grafica_pie {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    width: 50%;
+    width: 110px;
+    height: 110px;
+    
+    /* margin-left: 25%; */
+    margin-block: 25px;
     border-top-right-radius: 3%;
     border-bottom-right-radius: 3%;
     /* background-color: yellow; */
 }
 .pie_chart {
-    width: 170px;
+    width: 110px;
+    position: relative;
     /* background-color: pink; */
 }
-#myChart1 {
-    width: 5px;
-    height: 5px;
-}
-span { 
-    /* AJUSTE DEL TAMAÑO DE LAS LETRAS DE LAS TARJETAS */
-    display: inline-block;
-    height: 28px;
-}
-
-
-/* seccion de progreso y grafica de barras */
-.sp_section_div {
+.porcentaje-progreso{
     display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-block: 10px;
-}
-.progreso_area {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-
-    /* From https://css.glass */
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-/* tabla */
-#area_tabla {
-    width: 100%;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    color: white;
-}
-td, th {
-    text-align: center;
-    padding: 8px;
-}
-
-
-.progress {
-    display: flex;
+    position: absolute;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 50px;
-}
-.progress-bar {
-    display: flex;
-    align-items: center;
-    width: 95%;
-    height: 15px;
-    background-color: white;
-    border-radius: 10px;
-}
-.progressive-bar {
-    display: block;
-    width: 100%;
-    height: 10px;
-    background-color: green;
-    border-radius: 10px;
-    margin-inline: 3px;
-}
-.progreso_numeros {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
-    color: white;
-}
-.bar_chart {
+    height: 100%;
+    top: 0;
+    left: 0;
     /* background-color: red; */
+}
+.porcentaje-progreso p {
+    font-size: 15px;
+}
+.etiqueta-fibra {
+    width: 100%;
+    text-align: center;
+}
+/* BAR CHART */
+.bar_chart {
+    width: 45%;
+    /* background-color: yellow; */
+}
+/* .chart-size-card canvas {
+    height: 200px;
+} */
+#myChartBar {
+    height: 475px;
+}
+
+
+/* SECCION GENERALES */
+.main_div_3 {
+    display: flex;
+    width: 25%;
+    /* background-color: pink; */
+}
+.main-compare-div {
+    width: 90%;
+    margin-inline: 10px;
+    margin-block: 20px;
+
+    /* background-color: pink; */
+}
+.compare-card {
+    height: 320px;
+    text-align: center;
+
+    background-color: black;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    color: white;
+    border-radius: 10px;
+}
+.montos-estimados {
+    display: flex;
+    /* background-color: gray; */
+}
+.montos-estimados div {
+    width: 33.33%;
+    /* margin-block: 10px; */
+    font-size: 19px;
+}
+.span-1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+.span-2 {
+    font-size: 28px;
+}
+
+/* FINANCIEROS */
+a {
+    text-decoration: none;
+}
+.financieros-area {
+    margin-top: 15px;
+    /* background-color: blue; */
+}
+
+.carta-1 {
+    display: flex;
+    overflow-x: scroll;
+    overflow: hidden;
+
+    border: 0.5px solid rgb(214, 214, 214);
+}
+.tradingview-widget-container {
+    border: 1px solid rgba(231, 231, 231, 0.445);
+}
+.botones-financieros-area {
+    display: flex;
+}
+.botones-financieros-1 .boton-1 {
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 30px;
+    background-color: black;
+    color: white;
+    
+    border: 1px solid rgba(231, 231, 231, 0.596);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
 }
-.chart-size-card {
-    /* background-color: gray; */
-    width: 100%;
+.botones-financieros-2 .boton-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 30px;
+    background-color: white;
+    color: black;
+
+    border: 1px solid rgba(231, 231, 231, 0.596);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
+}
+.botones-financieros-3 .boton-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 85px;
+    height: 30px;
+    background-color: white;
+    color: black;
+
+    border: 1px solid rgba(231, 231, 231, 0.596);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: none;
 }
 
 
-
-/* SECCION RESPONSIVE */
-@media(max-width:1483px) {
-    /* BODY */
-    img {
-        position: fixed;
-        background-position: center;
-    }
-    .main_div {
-        margin-top: 0px;
+@media(max-width: 1700px) {
+    .responsive-box {
+        flex-direction: column;
+        overflow-y: scroll;
     }
 
-    /* BOTONES */
-    button {
+    /* SECCION GRAFICAS */
+    .body_div {
         width: 100%;
     }
-    #btn_section{
+
+    /* SECCION 3 */
+    .main_div_3 {
+        justify-content: center;
+        width: 100%;
+    }
+    .botones-financieros-area {
+        display: none;
+    }
+    .carta-1 {
+        justify-content: space-between;
+    }
+}
+
+
+@media(max-width: 1550px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    /* CONTENEDOR PRINCIPAL */
+    /* IMAGEN */
+    .imagen {
+        margin-block: 15px;
+    }
+
+
+    .centrar-datos-mobile {
+        display: flex;
+        justify-content: center;
+    }
+    .main_header {
+        display: none;
+    }
+    .main_header-2 {
+        display: block;
+    }
+    .espacio-datos {
+        border-bottom-right-radius: 50%;
+        border-bottom-left-radius: 50%;
+        width: 450px;
+        height: 420px;
+    }
+    .datos-inversion {
+        display: flex;
+        justify-content: center;
+    }
+    .datos-inversion-mobile {
         display: flex;
         width: 100%;
     }
-    #btn-1 {
-        width: 50%;
+
+    #form1 {display: none;}
+    #form2 {
+        display: flex;
+        justify-content: center;
+        height: auto;
+        margin-block: 20px;
     }
-    #btn-2 {
-        width: 50%;
+
+    /* BARRA DE PROGRESO */
+    .espacio-barra-progreso {
+        height: 100px;
+    }
+    .progress {
+        display: flex;
+        justify-content: center;
+        /* background-color: red; */
+    }
+    .progress-bar {
+        display: flex;
+        align-items: center;
+        width: 70%;
+        height: 15px;
+        background-color: white;
+        border-radius: 10px;
+
+        border: 2px solid gray;
+    }
+    .progressive-bar {
+        display: block;
+        width: 100%;
+        height: 10px;
+        background-color: green;
+        border-radius: 10px;
+        margin-inline: 3px;
     }
     
-    /* INSTRUMENTOS */
-    .tarjeta_instrumento {
+
+    /* CONTENEDOR SECUNDARIO */
+    .responsive-box {
+        overflow: hidden;
+    }
+    .responsive-box {
         width: 100%;
-    }
-    .pie_chart {
-        width: 120px;
-     }
-    .tarjeta_principal {
-        flex-direction: column;
-        margin-block: 10px;
-    }
-    .datos_div {
-        width: 100%;
-        height: 180px;
-        margin-left: 10px;
-
-        border-top-right-radius: 0%;
-        border-bottom-right-radius: 3%;
-        border-bottom-left-radius: 3%;
-
-        border-bottom: 1px solid rgb(61, 61, 61);
-        border-top: 0px solid rgb(61, 61, 61);
-        border-right: 1px solid rgb(61, 61, 61);
-        border-left: 1px solid rgb(61, 61, 61);
-    }
-}   
-
-
-@media(max-width:911px) {
-    table {
-        font-size: 12px;
     }
 }
 
 
-@media(max-width:780px) {
-    /* BODY */
-    .body_div {
+@media(max-width: 1205px) {
+    /* SECCION 1 */
+    .responsive-box {
+        overflow: hidden;
+    }
+    .datos-inversion-mobile {
+        width: 100%;
+    }
+
+    /* SECCION 3 */
+    .financieros-area {
+        display: none;
+    }
+    .carta-1 {
+        display: none;
+    }
+}
+
+
+@media(max-width: 995px) {
+    .area-cartas {
         flex-direction: column;
-        justify-content: center;
-        margin-inline: 10px;
     }
-    .main_div {
-        order: 1;
-        width: 100%;
-    }
-    .main_div_2 {
-        order: 0;
-        width: 100%;
-    }
-
-
-    /* INSTRUMENTOS */
-    .tarjeta_instrumento {
-        width: 100%;
-        margin-left: 0px;
-    }
-    .pie_chart {
-        width: 120px;
-     }
     .tarjeta_principal {
+        width: 100%;
+        margin-inline: 0px;
+        margin-block: 15px;
+    }
+
+    /* GRAFICAS */
+    .area-graficas {
         flex-direction: column;
+        margin-inline: 15px;
+        height: auto;
     }
-    .datos_div {
-        width: 100%;
-        height: 180px;
-        margin-left: 0px;
-
-        border-top-right-radius: 0%;
-        border-bottom-right-radius: 3%;
-        border-bottom-left-radius: 3%;
-    }
-
-    /* TABLA */
-    table {
-        font-size: 12px;
-    }
-
-    /* BAR CHART */
-    .chart-size-card {
+    .grafica-lineas {
         width: 100%;
     }
-}  
+    .area-pie {
+        display: none;
+    }
+    .bar_chart {
+        width: 100%;
+    }
+
+
+    /* COMPARE CARDS */
+    .compare-card {display: none;}
+    .compare-card-2 {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        height: 395px;
+
+        background-color: black;
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 4px );
+        -webkit-backdrop-filter: blur( 4px );
+        color: white;
+        border-radius: 10px;
+    }
+}

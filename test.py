@@ -11,18 +11,25 @@ db = mysql.connector.connect(
     port = 3306
 )
 
-sql = """CREATE TABLE dividendos (
-id INTEGER AUTO_INCREMENT PRIMARY KEY,
-fecha DATE NOT NULL,
-fibra VARCHAR(50) NOT NULL,
-titulos INTEGER,
-dividendo DECIMAL(10,4),
-impuesto DECIMAL(10,2),
-ganancia DECIMAL(10,2)
-);
-"""
+# sql = """CREATE TABLE dividendos (
+# id INTEGER AUTO_INCREMENT PRIMARY KEY,
+# fecha DATE NOT NULL,
+# fibra VARCHAR(50) NOT NULL,
+# titulos INTEGER,
+# dividendo DECIMAL(10,4),
+# impuesto DECIMAL(10,2),
+# ganancia DECIMAL(10,2)
+# );
+# """
 
+sql = """SELECT SUM(ganancia) AS total
+FROM dividendos
+WHERE YEAR(fecha) = '2025'
+GROUP BY MONTH(fecha)
+"""
 # cur = db.cursor()
+
+
 # cur.execute("SELECT * FROM inversiones")
 # data = cur.fetchall()
 
@@ -30,8 +37,8 @@ ganancia DECIMAL(10,2)
 # cur.execute(sql)
 # db.commit()
 
-# cur.execute("SHOW COLUMNS FROM dividendos")
+# cur.execute(sql)
 # data = cur.fetchall()
 
 # for x in data:
-#     print (x)
+#     print(x[0])

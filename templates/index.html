@@ -8,236 +8,557 @@
     <title>Perfil</title>
 </head>
 <body>
-
-    <div class="capa">
-        <img src="/static/css/img/wallpaper.jpg" alt="">
-    </div>
     
+    <!-- TARJETA DEL PERFIL -->
     <div id="section_div" class="main_header">
-        <div class="capa"> 
-            <h1>Perfil de inversion</h1>
+        <div class="espacio-tarjeta">
+            <div class="titulo">
+                <h1>Perfil de inversion</h1>
+            </div> 
+        </div>
+        
+        
+        <div class="espacio-datos">
+            <div class="datos-perfil">
+                <!-- FOTO DEL PERFIL -->
+                <div class="espacio-imagen">
+                    <div class="imagen"></div>
+                </div>
+
+                <!-- DATOS DE INVERSION -->
+                <div class="datos-inversion">
+                    <div class="datos-inversion-div">
+                        <span>Inversión: </span><br>
+                        <span>${{ '%0.2f'|format(perfil[1]) }}</span>
+                    </div>
+                    <div class="datos-inversion-div">
+                        <span>Titulos:</span><br>
+                        <span>{{ perfil[0]|int }}</span>
+                    </div>
+                    <!-- <div class="datos-inversion-div">
+                        <span>Rentas:</span><br>
+                        <span style="color: green;">${{ '%0.2f'|format(perfil[2]) }}</span>
+                    </div> -->
+                </div>
+
+                <!-- ENLACES PARA PAGINAS OFICIALES -->
+                 <div class="espacio-enlaces-web">
+                    <div class="boton-espacio">
+                        <div class="espacio-a">
+                            <a href="https://www.fibramty.com/" id="boton-a">
+                                <div class="boton">
+                                    <div class="imagen-fibra-espacio">
+                                        <div class="imagen-fibra-fmty"></div>
+                                    </div>
+                                    <p>FMTY Sitio Oficial</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="espacio-a">
+                            <a href="https://www.fibra-nova.com/" id="boton-a">
+                                <div class="boton">
+                                    <div class="imagen-fibra-espacio">
+                                        <div class="imagen-fibra-fnova"></div>
+                                    </div>
+                                    <p>FNOVA Sitio Oficial</p>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="espacio-a">
+                            <a href="https://fibradanhos.com.mx/" id="boton-a">
+                                <div class="boton">
+                                    <div class="imagen-fibra-espacio">
+                                        <div class="imagen-fibra-danhos"></div>
+                                    </div>
+                                    <p>DANHOS Sitio Oficial</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+            <!-- BARRA DE PROGRESO -->
+            <div class="espacio-barra-progreso">
+                <div class="barra-area">
+                    <div class="main-barra">
+                        <canvas id="barra-progreso"></canvas>
+                    </div>
+                </div>
+                <div class="progreso_numeros">
+                    <p>{{ '%0.2f'|format(precio[0]) }}% de 100%</p>
+                </div>
+            </div>
         </div>
     </div>
 
-    <form action="/direccionar_menu" method="post" id="form1">
-        <div id="btn_section">
-            <div id="btn-1">
-                <button onclick="menuInversion()">Registrar inversion</button>
-            </div>
-
-            <div id="btn-2">
-                <button onclick="menuDividendo()">Registrar dividendos</button>
-            </div>
+    <!-- MAIN HEADER 2 RESPONSIVE -->
+    <div class="main_header-2" hidden>
+        <div class="espacio-tarjeta">
+            <div class="titulo">
+                <h1>Perfil de inversion</h1>
+            </div> 
         </div>
-        <input type="text" name="selec_menu" id="id_menu" hidden>
-    </form>
-    
-
-    <div class="body_div">
-
-        <div id="main_div" class="main_div">
-
-            <div id="mid_div">
-
-                <!-- CHART 1 -->
-                <div class="tarjeta_principal">
-                    <div class="tarjeta_instrumento">
-                        <div class="tradingview-widget-container" id="fmty_grafica">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                            {
-                                "symbol": "BIVA:FMTY/14",
-                                "width": "auto",
-                                "height": 200,
-                                "locale": "es",
-                                "dateRange": "12M",
-                                "colorTheme": "dark",
-                                "isTransparent": false,
-                                "autosize": false,
-                                "largeChartUrl": ""
-                            }
-                            </script>
-                        </div>
+        
+        <div class="centrar-datos-mobile">
+            <div class="espacio-datos">
+                <div class="datos-perfil">
+                    <!-- FOTO DEL PERFIL -->
+                    <div class="espacio-imagen">
+                        <div class="imagen"></div>
                     </div>
-                    <!-- datos -->
-                    <div class="datos_div">
-                        <div class="informacion_de_instrumento">
-                            <span>Inversión: ${{ '%0.2f'|format(datos[5]) }}</span><br>
-                            <span>Titulos: {{ datos[4]|int }}</span><br>
-                            <span>Dividendos: ${{ '%0.2f'|format(datos[10]) }}</span><br>
-                            <span>Impuestos: ${{ '%0.2f'|format(datos[11]) }}</span><br>
-                        </div>
-                        <!-- grafica pie -->
-                        <div class="mini_grafica_pie">
-                            <div class="pie_chart">
-                                <canvas id="myChart1"></canvas>
+
+                    <!-- DATOS DE INVERSION -->
+                    <div class="datos-inversion">
+                        <div class="datos-inversion-mobile">
+                            <div class="datos-inversion-div">
+                                <span>Inversión: </span><br>
+                                <span>${{ '%0.2f'|format(perfil[1]) }}</span>
+                            </div>
+                            <div class="datos-inversion-div">
+                                <span>Titulos:</span><br>
+                                <span>{{ perfil[0]|int }}</span>
+                            </div>
+                            <div class="datos-inversion-div">
+                                <span>Rentas:</span><br>
+                                <span style="color: green;">${{ '%0.2f'|format(perfil[2]) }}</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- END -->
 
-                <!-- CHART 2 -->
-                <div class="tarjeta_principal">
-                    <div class="tarjeta_instrumento">
-                        <div class="tradingview-widget-container" id="a2">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                            {
-                                "symbol": "BIVA:FNOVA/17",
-                                "width": "auto",
-                                "height": 200,
-                                "locale": "es",
-                                "dateRange": "12M",
-                                "colorTheme": "dark",
-                                "isTransparent": false,
-                                "autosize": false,
-                                "largeChartUrl": ""
-                            }
-                            </script>
-                        </div>
-                    </div>
-                    <!-- datos -->
-                    <div class="datos_div">
-                        <div class="informacion_de_instrumento">
-                            <span>Inversión: ${{ '%0.2f'|format(datos[3]) }}</span><br>
-                            <span>Titulos: {{ datos[2]|int }}</span><br>
-                            <span>Dividendos: ${{ '%0.2f'|format(datos[8]) }}</span><br>
-                            <span>Impuestos: ${{ '%0.2f'|format(datos[9]) }}</span><br>
-                        </div>
-                        <!-- grafica pie -->
-                        <div class="mini_grafica_pie">
-                            <div class="pie_chart">
-                                <canvas id="myChart2"></canvas>
+                    <!-- ENLACES PARA PAGINAS OFICIALES -->
+                    <form action="/direccionar_menu" method="post" id="form2" hidden>
+                        <div id="btn_section">
+                            <div id="btn-1">
+                                <button onclick="menuInversion()">Registrar inversion</button>
+                            </div>
+                
+                            <div id="btn-2">
+                                <button onclick="menuDividendo()">Registrar dividendos</button>
                             </div>
                         </div>
-                    </div>
+                        <input type="text" name="selec_menu" id="id_menu" hidden>
+                    </form>
                 </div>
-                <!-- END -->
 
-                <!-- CHART 3 -->
-                <div class="tarjeta_principal">
-                    <div class="tarjeta_instrumento">
-                        <div class="tradingview-widget-container" id="a3">
-                            <div class="tradingview-widget-container__widget"></div>
-                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                            {
-                                "symbol": "BIVA:DANHOS/13",
-                                "width": "auto",
-                                "height": 200,
-                                "locale": "es",
-                                "dateRange": "12M",
-                                "colorTheme": "dark",
-                                "isTransparent": false,
-                                "autosize": false,
-                                "largeChartUrl": ""
-                            }
-                            </script>
-                        </div>
-                    </div>
-                    <!-- datos -->
-                    <div class="datos_div">
-                        <div class="informacion_de_instrumento">
-                            <span>Inversión: ${{ '%0.2f'|format(datos[1]) }}</span><br>
-                            <span>Titulos: {{ datos[0]|int }}</span><br>
-                            <span>Dividendos: ${{ '%0.2f'|format(datos[6]) }}</span><br>
-                            <span>Impuestos: ${{ '%0.2f'|format(datos[7]) }}</span><br>
-                        </div>
-                        <!-- grafica pie -->
-                        <div class="mini_grafica_pie">
-                            <div class="pie_chart">
-                                <canvas id="myChart3"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- END -->
-            </div>
-        </div>
-
-        <div class="main_div_2">
-            <div class="sp_section_div">
-                <div class="progreso_area">
-                    <div id="area_tabla">
-                        <table>
-                            <th>Inversion total</th>
-                            <th>Titulos</th>
-                            <th>Rendimiento Real</th>
-                            <tbody>
-                                <tr>
-                                    <td>${{ '%0.2f'|format(perfil[1]) }}</td>
-                                    <td>{{ perfil[0]|int }}</td>
-                                    <td>${{ '%0.2f'|format(perfil[2]) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <!-- BARRA DE PROGRESO -->
+                <div class="espacio-barra-progreso">
                     <div class="progress">
                         <div class="progress-bar">
-                            <div class="progressive-bar" style="width: {{ '%0.2f'|format(precio) }}%;"></div>
+                            <div class="progressive-bar" style="width: {{ '%0.2f'|format(precio[0]) }}%;"></div>
                         </div>
                     </div>
                     <div class="progreso_numeros">
-                        <p>{{ '%0.2f'|format(precio) }}% de 100%</p>
+                        <p>{{ '%0.2f'|format(precio[0]) }}% de 100%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
+    </div>
+    
+    <div class="responsive-box">
+        <!-- SECCION 2 (GRAFICAS) -->
+        <div class="body_div">
+
+            <div id="main_div" class="main_div">
+
+                <!-- BOTONES -->
+                <form action="/direccionar_menu" method="post" id="form1">
+                    <div id="btn_section">
+                        <div id="btn-1">
+                            <button onclick="menuInversion()">Registrar inversion</button>
+                        </div>
+            
+                        <div id="btn-2">
+                            <button onclick="menuDividendo()">Registrar dividendos</button>
+                        </div>
+                    </div>
+                    <input type="text" name="selec_menu" id="id_menu" hidden>
+                </form>
+
+                <div id="mid_div">
+
+                    <!-- CARTAS -->
+                    <div class="area-cartas">
+                        <!-- CHART 1 -->
+                        <div class="tarjeta_principal">
+                            <div class="tarjeta_instrumento">
+                                <div class="tradingview-widget-container" id="fmty_grafica">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                                    {
+                                        "symbol": "BIVA:FMTY/14",
+                                        "width": "auto",
+                                        "height": 200,
+                                        "locale": "es",
+                                        "dateRange": "12M",
+                                        "colorTheme": "light",
+                                        "isTransparent": false,
+                                        "autosize": false,
+                                        "largeChartUrl": ""
+                                    }
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- datos -->
+                            <div class="datos_div">
+                                <div class="informacion_de_instrumento">
+                                    <span>Inversión: ${{ '%0.2f'|format(datos[5]) }}</span><br>
+                                    <span>Titulos: {{ datos[4]|int }}</span><br>
+                                    <span>Dividendos: <span style="color: green;">${{ '%0.2f'|format(datos[10]) }}</span></span><br>
+                                    <span>Impuestos: <span style="color: red;">${{ '%0.2f'|format(datos[11]) }}</span></span><br>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END -->
+
+                        <!-- CHART 2 -->
+                        <div class="tarjeta_principal">
+                            <div class="tarjeta_instrumento">
+                                <div class="tradingview-widget-container" id="a2">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                                    {
+                                        "symbol": "BIVA:FNOVA/17",
+                                        "width": "auto",
+                                        "height": 200,
+                                        "locale": "es",
+                                        "dateRange": "12M",
+                                        "colorTheme": "light",
+                                        "isTransparent": false,
+                                        "autosize": false,
+                                        "largeChartUrl": ""
+                                    }
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- datos -->
+                            <div class="datos_div">
+                                <div class="informacion_de_instrumento">
+                                    <span>Inversión: ${{ '%0.2f'|format(datos[3]) }}</span><br>
+                                    <span>Titulos: {{ datos[2]|int }}</span><br>
+                                    <span>Dividendos: <span style="color: green;">${{ '%0.2f'|format(datos[8]) }}</span></span><br>
+                                    <span>Impuestos: <span style="color: red;">${{ '%0.2f'|format(datos[9]) }}</span></span><br>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END -->
+
+                        <!-- CHART 3 -->
+                        <div class="tarjeta_principal">
+                            <div class="tarjeta_instrumento">
+                                <div class="tradingview-widget-container" id="a3">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                                    {
+                                        "symbol": "BIVA:DANHOS/13",
+                                        "width": "auto",
+                                        "height": 200,
+                                        "locale": "es",
+                                        "dateRange": "12M",
+                                        "colorTheme": "light",
+                                        "isTransparent": false,
+                                        "autosize": false,
+                                        "largeChartUrl": ""
+                                    }
+                                    </script>
+                                </div>
+                            </div>
+                            <!-- datos -->
+                            <div class="datos_div">
+                                <div class="informacion_de_instrumento">
+                                    <span>Inversión: ${{ '%0.2f'|format(datos[1]) }}</span><br>
+                                    <span>Titulos: {{ datos[0]|int }}</span><br>
+                                    <span>Dividendos: <span style="color: green;">${{ '%0.2f'|format(datos[6]) }}</span></span><br>
+                                    <span>Impuestos: <span style="color: red;">${{ '%0.2f'|format(datos[7]) }}</span></span><br>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END -->
                     </div>
                 </div>
 
+                <div>
+                    <span style="color: transparent; cursor: default;">Soy invisible no me miras xDdd</span>
+                </div>
+                
+                <!-- AREA DE LAS GRAFICAS -->
+                <div class="area-graficas">
+                    <div class="grafica-lineas">
+                        <div class="linechart"> 
+                            <canvas id="myLineChart" class="myLineChart" style="height: 145px;"></canvas>
+                        </div>
+                    </div>
+                    <!-- GRAFICAS PIE -->
+                    <div class="area-pie">
+                        <!-- grafica 1 -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart1"></canvas>
+                                <div class="porcentaje-progreso">
+                                    <p style="color: black;">{{ '%0.2f'|format(precio[1]) }}%</p>
+                                </div>
+                            </div>
+                            <div class="etiqueta-fibra">
+                                <p style="color: black; font-weight: bold;">FMTY</p>
+                            </div>
+                        </div>
+                        <!-- grafica 2 -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart2"></canvas>
+                                <div class="porcentaje-progreso">
+                                    <p style="color: black;">{{ '%0.2f'|format(precio[2]) }}%</p>
+                                </div>
+                            </div>
+                            <div class="etiqueta-fibra">
+                                <p style="color: black; font-weight: bold;">FNOVA</p>
+                            </div>
+                        </div>
+                        <!-- grafica 3 -->
+                        <div class="mini_grafica_pie">
+                            <div class="pie_chart">
+                                <canvas id="myChart3"></canvas>
+                                <div class="porcentaje-progreso">
+                                    <p style="color: black;">{{ '%0.2f'|format(precio[3]) }}%</p>
+                                </div>
+                            </div>
+                            <div class="etiqueta-fibra">
+                                <p style="color: black; font-weight: bold;">DANHOS</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- grfica barras -->
+                    <div id="section_div" class="bar_chart">
+                        <div class="chart-size-card">
+                            <canvas id="myChartBar" ></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <br>
+        </div>
 
-            <!-- <div id="section_div">
-                <table>
-                    <th>Fibra</th>
-                    <th>Titulos</th>
-                    <th>Inversion</th>
-                    <th>Dividendo</th>
-                    <th>Impuesto</th>
-                    <tbody>
-                        <tr>
-                            <td style="background-color: rgba(58, 58, 58, 0.041);">DANHOS</td>
-                            <td>{{ datos[0]|int }}</td>
-                            <td>${{ '%0.2f'|format(datos[1]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[6]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[7]) }}</td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: rgba(58, 58, 58, 0.041);">FNOVA</td>
-                            <td>{{ datos[2]|int }}</td>
-                            <td>${{ '%0.2f'|format(datos[3]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[8]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[9]) }}</td>
-                        </tr>
-                        <tr>
-                            <td style="background-color: rgba(58, 58, 58, 0.041);;">FMTY</td>
-                            <td>{{ datos[4]|int }}</td>
-                            <td>${{ '%0.2f'|format(datos[5]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[10]) }}</td>
-                            <td>${{ '%0.2f'|format(datos[11]) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> -->
 
-            
+        <!-- SECCION 3 -->
+        <div class="main_div_3">
+            <div class="main-compare-div">
+                <!-- CARTA COMPARE -->
+                <div class="compare-card">
+                    <div class="compare-data">
+                        <div>
+                            <div style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <h3>Rendimiento anual estimado</h3>
+                            </div>
 
-            <!-- GRAFICA DE BARRAS -->
-            <div id="section_div" style="padding-inline: 10px;" class="bar_chart">
-                <div class="chart-size-card">
-                    <canvas id="myChartBar" style="width:auto; height: auto;"></canvas>
+                            <div class="montos-estimados">
+                                <div>
+                                    <p style="font-weight: bold;">FMTY</p>
+                                    <p>$32.00</p>
+                                </div>
+                                <div>
+                                    <p style="font-weight: bold;">FNOVA</p>
+                                    <p>$43.50</p>
+                                </div>
+                                <div>
+                                    <p style="font-weight: bold;">DANHOS</p>
+                                    <p>$62.68</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="span-1">
+                                <span id="span-card-1">Rendimiento estimado</span><br>
+                                <span>$138.18 - 6.91%</span><br>
+                            </div>
+                            <div class="span-2">
+                                <span>Rendimiento actual</span><br>
+                                <span style="color: rgb(5, 202, 5);">${{ '%0.2f'|format(perfil[2]) }} - {{ '%0.2f'|format(anual) }}%</span>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                <!-- COMPARE CARD MOBILE -->
+                <div class="compare-card-2" hidden>
+                    <div class="compare-data">
+                        <div>
+                            <div style="height: 50px; display: flex; align-items: center; justify-content: center;">
+                                <h3>Rendimiento anual estimado</h3>
+                            </div>
+
+                            <div class="montos-estimados">
+                                <div>
+                                    <p style="font-weight: bold;">FMTY</p>
+                                    <p>$32.00</p>
+                                    <p style="color: rgb(5, 202, 5);;">${{ '%0.2f'|format(datos[10]) }}</p>
+                                    <p style="color: rgb(5, 202, 5);;">{{ '%0.2f'|format(precio[1]) }}%</p>
+                                </div>
+                                <div>
+                                    <p style="font-weight: bold;">FNOVA</p>
+                                    <p>$43.50</p>
+                                    <p style="color: rgb(5, 202, 5);;">${{ '%0.2f'|format(datos[8]) }}</p>
+                                    <p style="color: rgb(5, 202, 5);;">{{ '%0.2f'|format(precio[2]) }}%</p>
+                                </div>
+                                <div>
+                                    <p style="font-weight: bold;">DANHOS</p>
+                                    <p>$62.68</p>
+                                    <p style="color: rgb(5, 202, 5);;">${{ '%0.2f'|format(datos[6]) }}</p>
+                                    <p style="color: rgb(5, 202, 5);;">{{ '%0.2f'|format(precio[3]) }}%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="span-1">
+                                <span id="span-card-1">Rendimiento estimado</span><br>
+                                <span>$138.18 - 6.91%</span><br>
+                            </div>
+                            <div class="span-2">
+                                <span>Rendimiento actual</span><br>
+                                <span style="color: rgb(5, 202, 5);">${{ '%0.2f'|format(perfil[2]) }} - {{ '%0.2f'|format(anual) }}%</span>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+                <!-- FINANCIEROS -->
+                <div class="financieros-area">
+                    <div class="bloques-financieros">
+                        <div class="botones-financieros-area">
+                            <div class="botones-financieros-1">
+                                <a href="#scroll-1"><div class="boton-1" id="boton-1" onclick="botonClick1()">
+                                    <p>FMTY</p>
+                                </div></a>
+                            </div>
+                            <div class="botones-financieros-2">
+                                <a href="#scroll-2"><div class="boton-2" id="boton-2" onclick="botonClick2()">
+                                    <p>FNOVA</p>
+                                </div></a>
+                            </div>
+                            <div class="botones-financieros-3">
+                                <a href="#scroll-3"><div class="boton-3" id="boton-3" onclick="botonClick3()">
+                                    <p>DANHOS</p>
+                                </div></a>
+                            </div>
+                        </div>
+                        <div class="carta-1">
+                            <!-- INFO 1 -->
+                            <section id="scroll-1">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                                        {
+                                            "isTransparent": false,
+                                            "largeChartUrl": "",
+                                            "displayMode": "regular",
+                                            "width": "348",
+                                            "height": "510",
+                                            "colorTheme": "light",
+                                            "symbol": "BIVA:FMTY/14",
+                                            "locale": "es"
+                                        }
+                                    </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                            </section>
+                            <!-- INFO 2 -->
+                            <section id="scroll-2">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                                    {
+                                        "isTransparent": false,
+                                        "largeChartUrl": "",
+                                        "displayMode": "regular",
+                                        "width": "348",
+                                        "height": "510",
+                                        "colorTheme": "light",
+                                        "symbol": "BIVA:FNOVA/17",
+                                        "locale": "es"
+                                    }
+                                    </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                            </section>
+                            <!-- INFO 3 -->
+                            <section id="scroll-3">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                                    {
+                                        "isTransparent": false,
+                                        "largeChartUrl": "",
+                                        "displayMode": "regular",
+                                        "width": "348",
+                                        "height": "510",
+                                        "colorTheme": "light",
+                                        "symbol": "BIVA:DANHOS/13",
+                                        "locale": "es"
+                                    }
+                                    </script>
+                                </div>
+                                <!-- TradingView Widget END -->
+                            </section>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <!-- GRAFICAS Y ELEMENTOS DE ESTADISTICA -->
+
+    <!-- BARRA DE PROGRESO -->
+    <script>
+        var xValues = ["Rendimiento real", "Rendimiento estimado"];
+        var yValues = [{{ '%0.2f'|format(precio[0]) }}, 100.00];
+        var barColors = [
+        "green",
+        "#E5E4E2"
+        ];
+
+        new Chart("barra-progreso", {
+            type: "doughnut",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues,
+                borderWidth: 3,
+                borderColor: '#D3D3D3'
+                }]
+            },
+            options: {
+                aspectRatio: 2,
+                cutoutPercentage: 70,
+                rotation: -Math.PI/1,
+                circumference: Math.PI,
+                legend: {display: false},
+                title: {
+                    display: false,
+                    text: "Rendimiento real"
+                }
+            }
+        });
+    </script>
 
     <!-- GRAFICA FMTY -->
     <script>
         var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
-        var yValues = [24.14, {{ '%0.2f'|format(datos[10]) }}];
+        var yValues = [{{ '%0.2f'|format(datos[10]) }}, 32.00];
         var barColors = [
-        "#908989",
-        "orange"
+        "green",
+        "#E5E4E2"
         ];
 
         new Chart("myChart1", {
@@ -246,14 +567,16 @@
                 labels: xValues,
                 datasets: [{
                 backgroundColor: barColors,
-                data: yValues
+                data: yValues,
+                borderColor: '#D3D3D3'
                 }]
             },
             options: {
+                cutoutPercentage: 70,
                 legend: {display: false},
                 title: {
-                display: false,
-                text: "Rendimiento real"
+                    display: false,
+                    text: "Rendimiento real"
                 }
             }
         });
@@ -262,10 +585,10 @@
     <!-- GRAFICA FNOVA -->
     <script>
         var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
-        var yValues = [43.50, {{ '%0.2f'|format(datos[8]) }}];
+        var yValues = [{{ '%0.2f'|format(datos[8]) }}, 43.50];
         var barColors = [
-        "#908989",
-        "orange"
+        "green",
+        "#E5E4E2"
         ];
 
         new Chart("myChart2", {
@@ -274,10 +597,12 @@
                 labels: xValues,
                 datasets: [{
                 backgroundColor: barColors,
-                data: yValues
+                data: yValues,
+                borderColor: '#D3D3D3'
                 }]
             },
             options: {
+                cutoutPercentage: 70,
                 legend: {display: false},
                 title: {
                 display: false,
@@ -290,10 +615,10 @@
     <!-- GRAFICA DANHOS -->
     <script>
         var xValues = ["Rendimiento estimado", "Rendimiento en progreso"];
-        var yValues = [58.31, {{ '%0.2f'|format(datos[6]) }}];
+        var yValues = [{{ '%0.2f'|format(datos[6]) }}, 58.31, ];
         var barColors = [
-        "#908989",
-        "orange"
+        "green",
+        "#E5E4E2"
         ];
 
         new Chart("myChart3", {
@@ -302,14 +627,88 @@
                 labels: xValues,
                 datasets: [{
                 backgroundColor: barColors,
-                data: yValues
+                data: yValues,
+                borderColor: '#D3D3D3'
                 }]
             },
             options: {
+                cutoutPercentage: 70,
                 legend: {display: false},
                 title: {
                 display: false,
                 text: "Rendimiento real"
+                }
+            }
+        });
+    </script>
+
+
+    <!-- GRAFICA DE LINEAS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js" integrity="sha512-JPcRR8yFa8mmCsfrw4TNte1ZvF1e3+1SdGMslZvmrzDYxS69J7J49vkFL8u6u8PlPJK+H3voElBtUCzaXj+6ig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const xLineValues = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+        const yLineCetes = [0,14.84,29.57,44.51,59.34,74.18,89.01,103.85,118.68,133.52,148.36,163.19,178.03];
+        const yLineInfla = [0,6.94,13.88,20.82,27.76,34.70,41.64,48.58,55.52,62.46,69.40,76.34,83.28];
+        const yLineValues = {{ ganancia }};
+        
+        new Chart("myLineChart", {
+            type: "line",
+            data: {
+                labels: xLineValues,
+                datasets: [{
+                    // FIBRAS
+                    label: "FIBRAS",
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "green",
+                    borderColor: "green",
+                    data: yLineValues,
+                    datalabels: {
+                        display: true,
+                        color: 'black',
+                        anchor: 'end',
+                        align:'top',
+                        offset: 3
+                    }
+                },{
+                    // CETES
+                    label: "CETES",
+                    fill: true,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,0.15)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                    data: yLineCetes,
+                    datalabels: {
+                        display: false,
+                        color: 'black',
+                    }
+                },{
+                    // INFLACION (AÑO PASADO)
+                    label: "Inflacion (2024)",
+                    fill: true,
+                    lineTension: 0,
+                    backgroundColor: "rgba(255, 0, 0, 0.15)",
+                    borderColor: "rgba(255, 0, 0, 0.1)",
+                    data: yLineInfla,
+                    datalabels: {
+                        display: false,
+                        color: 'black',
+                    }
+                }]
+            },
+            plugins:[ChartDataLabels],
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                legend: {display: true},
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 180
+                        }
+                    }],
                 }
             }
         });
@@ -327,12 +726,12 @@
         var bar_ctx = document.getElementById('myChartBar').getContext('2d');
         
         var gradient = bar_ctx.createLinearGradient(0, 0, 0, 800);
-            gradient.addColorStop(0, '#d95300');
-            gradient.addColorStop(1, 'orange');
+            gradient.addColorStop(0, 'green');
+            gradient.addColorStop(1, 'green');
 
         var gradient_impuestos = bar_ctx.createLinearGradient(0, 0, 0, 800);
-            gradient_impuestos.addColorStop(1, 'black');
-            gradient_impuestos.addColorStop(0, 'red');
+            gradient_impuestos.addColorStop(1, 'gray');
+            gradient_impuestos.addColorStop(0, 'gray');
 
         var myChartBar = new Chart(bar_ctx, {
             type: "bar",
@@ -344,6 +743,12 @@
                     hoverBackgroundColor: gradient,
                     hoverBorderWidth: 2,
                     data: yDividendos,
+                    datalabels: {
+                        color: 'black',
+                        anchor: 'end',
+                        align:'top',
+                        offset: 5
+                    }
                 },
                 {
                     label: "Impuestos",
@@ -351,10 +756,18 @@
                     hoverBackgroundColor: gradient_impuestos,
                     hoverBorderWidth: 2,
                     data: yImpuestos,
-                }
-            ]
+                    datalabels: {
+                        color: 'black',
+                        anchor: 'end',
+                        align:'top',
+                        offset: 5
+                    }
+                }]
             },
+            plugins:[ChartDataLabels],
             options: {
+                responsive: true,
+                maintainAspectRatio: false,
                 legend: {display: true},
                 title: {
                 display: false,
@@ -367,12 +780,12 @@
                         },
                         gridLines: {
                             display: true,
-                            color: "gray"
+                            //color: "gray"
                         }
                     }],
                     xAxes: [{
                         gridLines: {
-                            color: "gray"
+                            // color: "gray"
                         }
                     }]
                 }
@@ -401,6 +814,53 @@
             miMenu.value = "dividendo";
 
             form.submit()
+        }
+    </script>
+
+    <!-- BOTONES DE FINANCIEROS -->
+    <script>
+        function botonClick1() {
+            var elementoBoton1 = document.getElementById('boton-1');
+            var elementoBoton2 = document.getElementById('boton-2');
+            var elementoBoton3 = document.getElementById('boton-3');
+
+            elementoBoton2.style.backgroundColor = 'white';
+            elementoBoton2.style.color = 'black';
+            elementoBoton3.style.backgroundColor = 'white';
+            elementoBoton3.style.color = 'black';
+
+            elementoBoton1.style.backgroundColor = 'black';
+            elementoBoton1.style.color = 'white';
+        }
+    </script>
+    <script>
+        function botonClick2() {
+            var elementoBoton1 = document.getElementById('boton-1');
+            var elementoBoton2 = document.getElementById('boton-2');
+            var elementoBoton3 = document.getElementById('boton-3');
+
+            elementoBoton1.style.backgroundColor = 'white';
+            elementoBoton1.style.color = 'black';
+            elementoBoton3.style.backgroundColor = 'white';
+            elementoBoton3.style.color = 'black';
+
+            elementoBoton2.style.backgroundColor = 'black';
+            elementoBoton2.style.color = 'white';
+        }
+    </script>
+    <script>
+        function botonClick3() {
+            var elementoBoton1 = document.getElementById('boton-1');
+            var elementoBoton2 = document.getElementById('boton-2');
+            var elementoBoton3 = document.getElementById('boton-3');
+
+            elementoBoton1.style.backgroundColor = 'white';
+            elementoBoton1.style.color = 'black';
+            elementoBoton2.style.backgroundColor = 'white';
+            elementoBoton2.style.color = 'black';
+
+            elementoBoton3.style.backgroundColor = 'black';
+            elementoBoton3.style.color = 'white';
         }
     </script>
 
